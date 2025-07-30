@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-
+document.addEventListener('DOMContentLoaded', function () {
     // --- NAVEGACIÓN MÓVIL ---
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -61,16 +60,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const bookingForm = document.getElementById('booking-form');
     const emailContactForm = document.getElementById('contact-form');
 
-    bookingForm.addEventListener('submit', function(e) {
+    bookingForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        alert('Gracias por tu solicitud de reserva. Nos pondremos en contacto contigo pronto para confirmar los detalles.');
+        alert(
+            'Gracias por tu solicitud de reserva. Nos pondremos en contacto contigo pronto para confirmar los detalles.'
+        );
         bookingForm.reset();
     });
 
-    emailContactForm.addEventListener('submit', function(e) {
+    emailContactForm.addEventListener('submit', function (e) {
         e.preventDefault();
         alert('Gracias por tu mensaje. Te responderemos lo antes posible.');
         emailContactForm.reset();
     });
-
 });
