@@ -1,5 +1,5 @@
 const _setBusinessData = (map = []) => {
-    map.forEach(({ query = '', attributes = {}, innerText = '', children = () => {} }) => {
+    map.forEach(({ query = '', attributes = {}, innerText = '', children = null }) => {
         const node = document.querySelector(query);
         if (node instanceof HTMLElement) {
             Object.keys(attributes).forEach(attribute => {
@@ -9,7 +9,7 @@ const _setBusinessData = (map = []) => {
             if (innerText) {
                 node.innerText = innerText;
             }
-            if (children) {
+            if (children instanceof Function) {
                 node.append(children());
             }
         }
