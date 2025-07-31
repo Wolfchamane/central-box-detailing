@@ -5,19 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
             name="description"
-            content="Servicios profesionales de detailing en Madrid. Lavado a mano, pulido de carrocería, limpieza de tapicerías y tratamientos cerámicos. ¡Pide tu cita!"
+            content="En Centralbox Detailing nos ocupamos de tu vehículo de forma profesional. Llevamos a cabo una limpieza integral de coches en Madrid, ¡contáctanos ahora!"
         />
-        <meta property="og:title" content="CentralBox Detailing - Cuidado Artesanal para tu Coche" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+        <meta property="og:title" content="Limpieza al Detalle de vehículos en Madrid | Centralbox Detailing" />
         <meta
             property="og:description"
-            content="Servicios profesionales de detailing en Madrid. Lavado a mano, pulido, tratamientos cerámicos y más. ¡Pide tu cita!"
+            content="En Centralbox Detailing nos ocupamos de tu vehículo de forma profesional. Llevamos a cabo una limpieza integral de coches en Madrid, ¡contáctanos ahora!"
         />
         <meta property="og:image" content="https://wolfchamane.github.io/central-box-detailing/og-image.jpg" />
         <meta property="og:url" content="https://wolfchamane.github.io/central-box-detailing/" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="es_ES" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Limpieza al Detalle de vehículos en Madrid | Centralbox Detailing" />
+        <meta
+            name="twitter:description"
+            content="En Centralbox Detailing nos ocupamos de tu vehículo de forma profesional. Llevamos a cabo una limpieza integral de coches en Madrid, ¡contáctanos ahora!"
+        />
         <title>CentralBox Detailing - Cuidado Artesanal para tú Coche en Madrid</title>
-        <link rel="icon" href="./logo.png" type="image/x-icon" />
+        <link rel="icon" href="./logo.png" type="image/x-icon" sizes="32x32" />
+        <link rel="icon" href="./logo.png" type="image/x-icon" sizes="64x64" />
+        <link rel="apple-touch-icon" href="./logo.png" type="image/x-icon" sizes="64x64" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -174,6 +183,7 @@
                 <div class="container">
                     <h2>Resultados que Hablan por Sí Mismos</h2>
 
+                    <!-- @todo: Connectar con RRSS -->
                     <h3 class="subsection-title">Nuestros Últimos Trabajos</h3>
                     <div class="instagram-gallery">
                         <img
@@ -214,6 +224,7 @@
                         />
                     </div>
 
+                    <!-- @todo: Connectar con Google Maps -->
                     <h3 class="subsection-title">La Opinión de Nuestros Clientes</h3>
                     <div class="testimonials-grid">
                         <div class="testimonial-card">
@@ -275,7 +286,17 @@
                                 <label for="tel">
                                     <input id="tel" type="tel" name="phone" placeholder="Tu Teléfono" required />
                                 </label>
-                                <button type="submit" class="cta-button">Solicitar Reserva</button>
+                                <label for="accept-checkbox" class="checkbox-wrapper">
+                                    <input id="accept-checkbox" type="checkbox" required />
+                                    <span
+                                        >He leído y acepto la
+                                        <a href="./politica-de-privacidad.html">política de protección de datos</a
+                                        >.</span
+                                    >
+                                </label>
+                                <button id="form-submit-button" type="submit" class="cta-button" disabled>
+                                    Solicitar Reserva
+                                </button>
                             </form>
                             <h3 class="subsection-title-form" style="margin-top: 1em">¿Otras consultas?</h3>
                             <form id="contact-form">
@@ -298,15 +319,15 @@
                         </div>
                         <div class="contact-info">
                             <h3>Nuestros Datos</h3>
-                            <p>
-                                <i class="fas fa-map-marker-alt"></i> Avenida del General Perón, 21, Parking Presidente
-                                Carmona Planta -1, 28020 Madrid
+                            <p data-ref="address">
+                                <i class="fas fa-map-marker-alt"></i>
                             </p>
-                            <p><i class="fas fa-phone"></i> <a href="tel:+34667798497">(+34) 667 798 497</a></p>
+                            <p><i class="fas fa-phone"></i> <a data-ref="phone" href="#"></a></p>
                             <p>
                                 <i class="fas fa-envelope"></i>
-                                <a href="mailto:centralboxdetailing@gmail.com">centralboxdetailing@gmail.com</a>
+                                <a data-ref="email" href="#"></a>
                             </p>
+                            <h3>Horario</h3>
                             <p><i class="fas fa-clock"></i> Lunes a Viernes: 10:00 - 19:00</p>
                             <p><i class="fas fa-clock"></i> Sábados: 10:00 - 18:00</p>
                             <p><i class="fas fa-clock"></i> Domingos: Cerrado</p>
@@ -339,9 +360,9 @@
                     </div>
                 </div>
                 <div class="social-links">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a data-ref="facebook" href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a data-ref="instagram" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a data-ref="whatsapp" href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </footer>

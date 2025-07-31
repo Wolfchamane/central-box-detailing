@@ -9,6 +9,9 @@
     --font-headings: 'Montserrat', sans-serif;
     --font-body: 'Lato', sans-serif;
     --header-height: 80px;
+    --brand-color-facebook: #1877f2;
+    --brand-color-whatsapp: #25d366;
+    --brand-color-instagram: #c13584;
 }
 
 * {
@@ -157,6 +160,12 @@ a {
 }
 .cta-button-whatsapp:hover {
     background-color: #1dae56;
+}
+
+.cta-button:disabled {
+    background-color: #333;
+    cursor: default;
+    pointer-events: none;
 }
 
 /* --- SECCIONES --- */
@@ -354,6 +363,22 @@ textarea {
     overflow: hidden;
 }
 
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    padding: 0 1em;
+}
+
+.checkbox-wrapper input {
+    width: auto;
+}
+
+.checkbox-wrapper span {
+    flex-grow: 1;
+}
+
 /* FOOTER */
 .main-footer {
     background-color: #111;
@@ -459,6 +484,21 @@ textarea {
 .social-links {
     text-align: center;
     flex-grow: 1;
+}
+
+.social-links a[data-ref='facebook']:hover {
+    color: var(--brand-color-facebook) !important;
+    fill: var(--brand-color-facebook) !important;
+}
+
+.social-links a[data-ref='whatsapp']:hover {
+    color: var(--brand-color-whatsapp) !important;
+    fill: var(--brand-color-whatsapp) !important;
+}
+
+.social-links a[data-ref='instagram']:hover {
+    color: var(--brand-color-instagram) !important;
+    fill: var(--brand-color-instagram) !important;
 }
 
 @media (min-width: 768px) {

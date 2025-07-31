@@ -1,4 +1,70 @@
+const _setBusinessData = (map = []) => {
+    map.forEach(({ query, attributes, innerText, children }) => {
+        const node = document.querySelector(query);
+        if (node instanceof HTMLElement) {
+            (attributes || []).forEach(({ attribute, value }) => {
+                node.setAttribute(attribute, value);
+            });
+            if (innerText) {
+                node.innerText = innerText;
+            }
+            if (children) {
+                node.append(children());
+            }
+        }
+    });
+};
+
 document.addEventListener('DOMContentLoaded', function () {
+    const data = Object.freeze({
+        phoneNumber: '34667798497',
+        email: 'centralboxdetailing@gmail.com',
+        address: 'Avenida del General Perón, 21, Parking Presidente Carmona Planta -1, 28020 Madrid',
+        facebook: 'https://www.facebook.com/Centralbox-Detailing-Bernabéu-107181584752801/',
+        instagram: 'https://www.instagram.com/centralboxdetailing',
+        mapsUrl: 'https://maps.app.goo.gl/zj8d2UYqNztSHBR49'
+    });
+
+    const WHASTAPP_LINK = `https://wa.me/${data.phoneNumber}`;
+
+    _setBusinessData([
+        {
+            query: '[data-ref="phone"]',
+            attributes: [{ attribute: 'href', value: `tel:+${data.phoneNumber}` }],
+            innerText: data.phoneNumber.replace(/(\d{2})(\d{3})(\d{3})(\d{3})/, '(+$1) $2 $3 $4')
+        },
+        {
+            query: '[data-ref="whatsapp"]',
+            attributes: [{ attribute: 'href', value: WHASTAPP_LINK }]
+        },
+        {
+            query: '[data-ref="email"]',
+            attributes: [{ attribute: 'href', value: `mailto:${data.email}` }],
+            innerText: `${data.email}`
+        },
+        {
+            query: '[data-ref="address"]',
+            children: () => {
+                const link = document.createElement('a');
+                const text = document.createTextNode(data.address);
+                link.setAttribute('href', data.mapsUrl);
+                link.setAttribute('target', '_blank');
+                link.setAttribute('aria-label', 'Goggle Maps');
+                link.append(text);
+
+                return link;
+            }
+        },
+        {
+            query: '[data-ref="facebook"]',
+            attributes: [{ attribute: 'href', value: data.facebook }]
+        },
+        {
+            query: '[data-ref="instagram"]',
+            attributes: [{ attribute: 'href', value: data.instagram }]
+        }
+    ]);
+
     // --- NAVEGACIÓN MÓVIL ---
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -45,13 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     whatsappButton.addEventListener('click', () => {
         const userMessage = contactFormMessage.value;
-        const phoneNumber = '34667798497'; // IMPORTANTE: Reemplaza con tu número de teléfono
-        let whatsappUrl = `https://wa.me/${phoneNumber}`;
-
-        if (userMessage) {
-            whatsappUrl += `?text=${encodeURIComponent(userMessage)}`;
-        }
-
+        const whatsappUrl = `${WHASTAPP_LINK}?text=${encodeURIComponent(userMessage)}`;
         window.open(whatsappUrl, '_blank');
     });
 
@@ -73,4 +133,17 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('Gracias por tu mensaje. Te responderemos lo antes posible.');
         emailContactForm.reset();
     });
+
+    const acceptCheckbox = document.querySelector('#accept-checkbox');
+    const formSubmitButton = document.querySelector('#form-submit-button');
+    if (acceptCheckbox && formSubmitButton) {
+        acceptCheckbox.addEventListener('change', () => {
+            const isChecked = acceptCheckbox.checked;
+            if (isChecked) {
+                formSubmitButton.removeAttribute('disabled');
+            } else {
+                formSubmitButton.setAttribute('disabled', 'disabled');
+            }
+        });
+    }
 });
