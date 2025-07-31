@@ -1,8 +1,9 @@
 const _setBusinessData = (map = []) => {
-    map.forEach(({ query, attributes, innerText, children }) => {
+    map.forEach(({ query = '', attributes = {}, innerText = '', children = () => {} }) => {
         const node = document.querySelector(query);
         if (node instanceof HTMLElement) {
-            (attributes || []).forEach(({ attribute, value }) => {
+            Object.keys(attributes).forEach(attribute => {
+                const value = attributes[attribute];
                 node.setAttribute(attribute, value);
             });
             if (innerText) {
@@ -22,7 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
         address: 'Avenida del General Perón, 21, Parking Presidente Carmona Planta -1, 28020 Madrid',
         facebook: 'https://www.facebook.com/Centralbox-Detailing-Bernabéu-107181584752801/',
         instagram: 'https://www.instagram.com/centralboxdetailing',
-        mapsUrl: 'https://maps.app.goo.gl/zj8d2UYqNztSHBR49'
+        mapsUrl: 'https://maps.app.goo.gl/8kWw15X3ArqySUiy7',
+        mapsIframeUrl:
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6072.06044302646!2d-3.6982179237255925!3d40.452468071434005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4229d4bd3a32ef%3A0xa125bb7dfd05c972!2sCentralbox%20Detailing%20Bernab%C3%A9u!5e0!3m2!1ses!2ses!4v1753920211398!5m2!1ses!2ses"'
     });
 
     const WHASTAPP_LINK = `https://wa.me/${data.phoneNumber}`;
@@ -30,16 +33,16 @@ document.addEventListener('DOMContentLoaded', function () {
     _setBusinessData([
         {
             query: '[data-ref="phone"]',
-            attributes: [{ attribute: 'href', value: `tel:+${data.phoneNumber}` }],
+            attributes: { href: `tel:+${data.phoneNumber}` },
             innerText: data.phoneNumber.replace(/(\d{2})(\d{3})(\d{3})(\d{3})/, '(+$1) $2 $3 $4')
         },
         {
             query: '[data-ref="whatsapp"]',
-            attributes: [{ attribute: 'href', value: WHASTAPP_LINK }]
+            attributes: { href: WHASTAPP_LINK }
         },
         {
             query: '[data-ref="email"]',
-            attributes: [{ attribute: 'href', value: `mailto:${data.email}` }],
+            attributes: { href: `mailto:${data.email}` },
             innerText: `${data.email}`
         },
         {
@@ -57,11 +60,15 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         {
             query: '[data-ref="facebook"]',
-            attributes: [{ attribute: 'href', value: data.facebook }]
+            attributes: { href: data.facebook }
         },
         {
             query: '[data-ref="instagram"]',
-            attributes: [{ attribute: 'href', value: data.instagram }]
+            attributes: { href: data.instagram }
+        },
+        {
+            query: '[data-ref="maps-iframe"]',
+            attributes: { src: data.mapsIframeUrl }
         }
     ]);
 
