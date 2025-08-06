@@ -1,0 +1,31 @@
+{
+  "name": "central-box-detailing",
+  "version": "1.0.0",
+  "description": "Servicios profesionales de detailing y cuidado de coches en Madrid",
+  "homepage": "https://wolfchamane.github.io/central-box-detailing/",
+  "bugs": {
+    "url": "https://github.com/Wolfchamane/central-box-detailing/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wolfchamane/central-box-detailing.git"
+  },
+  "license": "MIT",
+  "author": "Arturo Martínez Díaz <arturo.martinez@amartinez.dev>",
+  "private": true,
+  "scripts": {
+    "format:check": "npm run format:check --workspaces --if-present",
+    "format:fix": "npm run format:fix --workspaces --if-present",
+    "lint:check": "npm run lint:check --workspaces --if-present",
+    "test:unit": "npm run test:unit --workspaces --if-present",
+    "test:unit:coverage": "npm run test:unit --workspaces --if-present -- --coverage",
+    "type:check": "npm run type:check --workspaces --if-present",
+    "test:e2e": "npm run test:e2e --workspaces --if-present"
+  },
+  "workspaces": [
+    "./landing"
+  ],
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}
