@@ -20,7 +20,7 @@ jobs:
             - name: Prepare artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                  path: ./src
+                  path: ./landing/src
             - name: Deploy content
               id: deployment
               uses: actions/deploy-pages@v4
