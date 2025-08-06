@@ -1,5 +1,9 @@
 {
     "name": "@centralboxdetailing/landing",
     "version": "1.0.0",
-    "description": "Landing WebSite"
+    "description": "Landing WebSite",
+    "scripts": {
+        "format:check": "npx prettier --config ../.prettierrc --check .",
+        "format:fix": "npx prettier --config ../.prettierrc --write ."
+    }
 }
